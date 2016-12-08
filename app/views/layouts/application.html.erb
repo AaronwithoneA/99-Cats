@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NinetyNineCatsDay1</title>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<nav class="main-nav">
+<h1><%= link_to "99 Cats", cats_url %></h1>
+<div>
+<% if current_user.nil? %>
+  <%= link_to "Sign in", new_sessions_url %>
+  <%= link_to "Sign up", new_user_url %>
+<% else %>
+  <%= current_user.user_name %>
+  <%= button_to "Logout", sessions_url, method: :delete %>
+<% end %>
+</div>
+</nav>
+
+<%= yield %>
+
+</body>
+</html>
